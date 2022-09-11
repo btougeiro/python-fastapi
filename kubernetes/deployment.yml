@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: python-fastapi-deployment
+  labels:
+    name: python-fastapi
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      name: python-fastapi
+  template:
+    metadata:
+      labels:
+        name: python-fastapi
+    spec:
+      containers:
+        - name: python-fastapi
+          image: btougeiro/python-fastapi:v1.0.0
+          ports:
+            - containerPort: 8000
+              name: container-port
